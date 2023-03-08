@@ -23,3 +23,7 @@ def primos(numero):
     (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47)
     """
     return tuple([prueba for prueba in range(2,numero) if esPrimo(prueba)])
+
+
+import doctest
+doctest.testmod()
