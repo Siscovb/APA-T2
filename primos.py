@@ -10,7 +10,11 @@ Exemples d'utilització:
 
 >>> primos(50)
 (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47)
+
+>>> descompon(36 * 175 * 143)
+(2, 2, 3, 3, 5, 5, 7, 11, 13)
 """
+
 
 def esPrimo(numero):
     """ 
@@ -29,6 +33,13 @@ def primos(numero):
     """
 
     return tuple([prova for prova in range(2, numero) if esPrimo(prova)])
+
+def descompon(numero):
+    """
+    Devuelve una tupla con la descomposición en factores primos de su argumento.
+    """
+
+    return tuple([prova for prova in range (2, numero) if primos(numero)])
 
 import doctest
 doctest.testmod()
