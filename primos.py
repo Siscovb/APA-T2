@@ -64,7 +64,8 @@ def mcm(numero1, numero2):
     numero1D = C(descompon(numero1))
     numero2D = C(descompon(numero2))
 
-    #Combinamos las descomposiciones factoriales en un solo 'diccionario' (contador). 
+    #Combinamos las descomposiciones factoriales en un solo 'diccionario' 
+    #(contador). 
     #En caso de igualdad nos quedamos con el exponente más grande
     factoritzacion = numero1D | numero2D  
 
