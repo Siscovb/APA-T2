@@ -13,7 +13,7 @@ def esPrimo(numero):
     [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
 
     """
-    for prueba in range(2, numero):                             
+    for prueba in range(2, int(numero ** 0.5) + 1):                             
         if numero % prueba == 0: return False
 
     return True 
@@ -45,7 +45,7 @@ def descompon(numero):
     for i in primos(numero):
         while numero % i == 0:
             resultado.append(i)
-            numero /= i
+            numero /= numero / i
 
     return tuple(resultado)
 
