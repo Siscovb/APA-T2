@@ -140,7 +140,7 @@ def mcm(numero1, numero2):
 
     mcm = 1 
     for factor, exp in factoritzacion.items():
-        mcm = mcm * (factor**exp)
+        mcm *= (factor**exp)
 
     return mcm
 
@@ -164,7 +164,7 @@ def mcd(numero1, numero2):
 
     mcd = 1
     for factor in factoresComunes:
-        mcd = mcd * factor
+        mcd *= factor
 
     return mcd
 
