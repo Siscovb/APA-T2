@@ -64,7 +64,7 @@ def mcm(numero1, numero2):
     numero1D = C(descompon(numero1))
     numero2D = C(descompon(numero2))
 
-    #Combinamos las descomposiciones factoriales en un solo diccionario. 
+    #Combinamos las descomposiciones factoriales en un solo 'diccionario' (contador). 
     #En caso de igualdad nos quedamos con el exponente más grande
     factoritzacion = numero1D | numero2D  
 
@@ -83,18 +83,16 @@ def mcd(numero1, numero2):
     12
 
     """
-    numero1D = list(descompon(numero1))
-    numero2D = list(descompon(numero2))
+    numero1D = C(descompon(numero1))
+    numero2D = C(descompon(numero2))
 
-    factoresComunes = []
-    for factor in numero1D:
-        if factor in numero2D:
-            factoresComunes.append(factor)
-            numero2D.remove(factor)
+    #Combinamos las descomposiciones factoriales en un solo contador. 
+    #En caso de igualdad nos quedamos con el exponente más pequeño
+    factoritzacion = numero1D & numero2D  
 
-    mcd = 1
-    for factor in factoresComunes:
-        mcd *= factor
+    mcd = 1 
+    for factor, exp in factoritzacion.items():
+        mcd *= (factor**exp)
 
     return mcd
 
