@@ -115,7 +115,7 @@ def descompon(numero):
     for i in primos(numero):
         while numero % i == 0:
             resultado.append(i)
-            numero = numero / i
+            numero /= i
 
     return tuple(resultado)
 
