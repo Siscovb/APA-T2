@@ -8,6 +8,10 @@ Exemples:
 (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47)
 >>> descompon(36 * 175 * 143)
 (2, 2, 3, 3, 5, 5, 7, 11, 13)
+>>> mcm(90, 14)
+630
+>>> mcd(924, 780)
+12
 """
 
 
@@ -39,16 +43,39 @@ def descompon(numero):
 
     return factores
 
-def mcm (numero1, numero2):
-    """
-    Devuelve el mínimo común múltiplo de sus argumentos.
-    """
 
 def fact2dic(numero1, numero2):
     factores1 = descompon(numero1)
     factores2 = descompon(numero2)
-    
+    factores = set(factores1) | set(factores2)
+    dic1 = {factor:0 for factor in factores}
+    dic2 = {factor:0 for factor in factores}
+    for factor in factores1:
+        dic1[factor] += 1
+    for factor in factores2:
+        dic2[factor] += 1
+    return dic1,dic2
 
-'esto es para hacer la prueba:'
+def mcm (numero1, numero2):
+    """
+    Devuelve el mínimo común múltiplo de sus argumentos.
+    """
+    dic1,dic2 = fact2dic(numero1,numero2)
+    mcm = 1
+    for factor in dic1:
+        mcm *= factor**max(dic1[factor],dic2[factor])
+    return mcm
+
+def mcd(numero1,numero2): 
+    """
+    Devuelve el mínimo común múltiplo de sus argumentos.
+    """
+    dic1,dic2 = fact2dic(numero1,numero2)
+    mcd = 1
+    for factor in dic1:
+        mcd *= factor**min(dic1[factor],dic2[factor])
+    return mcd
+
+'Para hacer los tests unitarios:'
 import doctest
 doctest.testmod()
