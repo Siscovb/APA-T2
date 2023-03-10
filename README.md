@@ -63,9 +63,84 @@ Al hacer la opción verbosa nos da el siguiente resultado:
 <img src="test.png" width="480" align="center">
 
 #### Código desarrollado
-
 Inserte a continuación el contenido del fichero `primos.py` usando los comandos necesarios para que se realice el
 realce sintáctico en Python del mismo.
+- Función esPrimo()
+```python
+def esPrimo(numero):
+    """
+    Devuelve True si su argumento es primo, y False si no lo es.
+    """
+
+    for proba in range(2, int(numero**0.5+1)):
+        if numero % proba ==0:
+            return False
+    return True 
+```
+
+- Función primos()
+```python
+def primos(numero):
+    """
+    Devuelve una tupla con todos los números primos menores que su argumento
+    """
+    return tuple([proba for proba in range(2,numero) if esPrimo(proba)])
+
+```
+- Función descompon()
+```python
+def descompon(numero):
+    """
+    Devuelve una tupla con la descomposición en factores primos de su argumento.
+    """
+    factores = tuple()
+    for factor in primos(numero + 1):
+        while numero%factor ==0:
+            numero = numero//factor
+            factores = factores + (factor,)
+
+    return factores
+```
+- Para realizar las funciones mcm y mcd anteriormente formulamos:
+```python
+def fact2dic(numero1, numero2):
+    factores1 = descompon(numero1)
+    factores2 = descompon(numero2)
+    factores = set(factores1) | set(factores2)
+    dic1 = {factor:0 for factor in factores}
+    dic2 = {factor:0 for factor in factores}
+    for factor in factores1:
+        dic1[factor] += 1
+    for factor in factores2:
+        dic2[factor] += 1
+    return dic1,dic2
+```
+- Función mcm()
+```python
+def mcm (numero1, numero2):
+    """
+    Devuelve el mínimo común múltiplo de sus argumentos.
+    """
+    dic1,dic2 = fact2dic(numero1,numero2)
+    mcm = 1
+    for factor in dic1:
+        mcm *= factor**max(dic1[factor],dic2[factor])
+    return mcm
+```
+- Función mcd()
+```python
+def mcd(numero1,numero2): 
+    """
+    Devuelve el mínimo común múltiplo de sus argumentos.
+    """
+    dic1,dic2 = fact2dic(numero1,numero2)
+    mcd = 1
+    for factor in dic1:
+        mcd *= factor**min(dic1[factor],dic2[factor])
+    return mcd
+```
+
+
 
 #### Subida del resultado al repositorio GitHub ¿y *pull-request*?
 
