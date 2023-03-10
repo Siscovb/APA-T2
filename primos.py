@@ -7,11 +7,11 @@ Modulo de gestión de numeros primos
 
 def esPrimo(numero):
     """
-    Devuelve True si su argumento es primo, y False si no lo es.
+    Devuelve True si su argumento es primo y False si no lo es.
     >>> [numero for numero in range(2,50) if esPrimo(numero)]
     [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
     """
-    for prueba in range(2,numero):
+    for prueba in range(2,int(numero**0.5+1)):
         if numero % prueba == 0:
             return False
     return True
