@@ -24,6 +24,18 @@ def primos(numero):
     """
     return tuple([prueba for prueba in range(2,numero) if esPrimo(prueba)])
 
+def descompon(numero): 
+    """
+    Devuelve una tupla con la descomposición en factores primos de su argumento.
+    >>> descompon(36 * 175 * 143) 
+    (2, 2, 3, 3, 5, 5, 7, 11, 13)
+    """
+    factores = tuple()
+    for factor in primos(numero+1):
+        while numero % factor == 0 :
+            numero = numero / factor
+            factores = factores + (factor,)
+    return factores
 
 import doctest
 doctest.testmod()
