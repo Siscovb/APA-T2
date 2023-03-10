@@ -37,5 +37,18 @@ def descompon(numero):
             factores = factores + (factor,)
     return factores
 
+def fact2dic(numero1,numero2):
+
+    factores1 = descompon(numero1)
+    factores2 = descompon(numero2)
+    factores = set(factores1) | set(factores2)
+    dic1 = {factor:0 for factor in factores}
+    dic2 = {factor:0 for factor in factores}
+    for factor in factores1:
+        dic1[factor] += 1
+    for factor in factores2:
+        dic2[factor] += 1
+    return dic1,dic2
+
 import doctest
 doctest.testmod()
