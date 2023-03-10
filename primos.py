@@ -50,5 +50,17 @@ def fact2dic(numero1,numero2):
         dic2[factor] += 1
     return dic1,dic2
 
+def mcm(numero1,numero2): 
+    """
+    Devuelve el mínimo común múltiplo de sus argumentos.
+    >>> mcm(90, 14)
+    630
+    """
+    dic1,dic2 = fact2dic(numero1,numero2)
+    mcm = 1
+    for factor in dic1:
+        mcm *= factor**max(dic1[factor],dic2[factor])
+    return mcm
+
 import doctest
 doctest.testmod()
