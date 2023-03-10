@@ -1,7 +1,7 @@
 """
 Joan Marc Fuentes Soler 
 
-Modulo de gestión de numeros primos
+Practica 2: Modulo de gestión de numeros primos
 
 """
 
