@@ -16,6 +16,9 @@ Exemples d'utilització:
 
 >>> mcm(90, 14)
 630
+
+>>> mcd(924, 780)
+12
 """
 
 
@@ -77,6 +80,19 @@ def mcm(numero1, numero2):
         mcm *= factor**max(dicFact1[factor], dicFact2[factor])
     
     return mcm
+
+def mcd(numero1, numero2):
+    """
+    Devuelve el máximo común divisor de sus argumentos.
+    """
+    
+    mcd = 1
+    #establim a les variables dicFact1 i dicFact2, la descomposició dels dos valors
+    dicFact1, dicFact2 = fact2dic(numero1, numero2)
+    for factor in dicFact1:
+        mcd *= factor**min(dicFact1[factor], dicFact2[factor])
+    
+    return mcd
 
 import doctest
 doctest.testmod()
