@@ -83,15 +83,51 @@ def mcd(numero1, numero2):
     >>> mcd(924, 780)
     12
     """
-    mcd = 1
     dic1, dic2 = fact2dic(numero1, numero2)
+    mcd = 1
     for factor in  dic1 | dic2:
-        mcd *= factor ** min(dic1[factor],dic2[factor])
+        mcd = mcd * factor ** min(dic1[factor],dic2[factor])
     return mcd 
 
+def fact2dicN(*numeros):
+        """
+        Pasa de descompon a un diccionario (para facilitar cálcula mcmN y mcdN)
+        """
+        diccionario = []
+        factores1 = descompon(numero1)
+        factores2 = descompon(numero2)
+        factores = set(factores1) | set(factores2)
+        # crear diccionario vacío
+        dic1 = {factor : 0 for factor in factores}
+        dic2 = {factor : 0 for factor in factores}
+        for factor in factores1:
+            dic1[factor] += 1
+
+        for factor in factores2:
+            dic2[factor]+= 1
+        return dic1, dic2
 
 
+def mcmN(*numeros): 
+    """
+    Devuelve el mínimo común múltiplo de sus argumentos.
+    """
+    dicN = fact2dicN(*numeros)
+    mcmN = 1
+    for factor in dicN:
+        mcmN = mcmN * factor**max(dicN[factor])
+    return mcmN
 
+
+def mcdN(*numeros): 
+    """
+    Devuelve el máximo común divisor de sus argumentos
+    """
+    dicN = fact2dicN(*numeros)
+    mcdN = 1
+    for factor in  dicN:
+        mcdN = mcdN * factor ** min(dicN[factor])
+    return mcdN
 
 
 import doctest
