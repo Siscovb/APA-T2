@@ -84,8 +84,14 @@ def mcd(numero1, numero2):
     12
     """
     mcd = 1
-
+    dic1, dic2 = fact2dic(numero1, numero2)
+    for factor in  fact2dic | dic2:
+        mcd *= factor ** min(fact2dic[factor],dic2[factor])
     return mcd 
+
+
+
+
 
 
 import doctest
