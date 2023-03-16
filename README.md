@@ -45,8 +45,13 @@ Estas dos funciones deben cumplir las condiciones siguientes:
 Escriba las funciones `mcmN()` y `mcdN()`, que calculan el mínimo común múltiplo y el máximo común divisor para un
 número arbitrario de argumentos:
 
+<<<<<<< HEAD
 - `mcm(*numeros)`:  Devuelve el mínimo común múltiplo de sus argumentos.
 - `mcd(*numeros)`:  Devuelve el máximo común divisor de sus argumentos.
+=======
+- `mcmN(*numeros)`:  Devuelve el mínimo común múltiplo de sus argumentos.
+- `mcdN(*numeros)`:  Devuelve el máximo común divisor de sus argumentos.
+>>>>>>> 48f85b95cc1bf58dd7dd9be4756517d20d156718
 
 ### Tests unitarios
 
@@ -59,7 +64,11 @@ comprobarse las siguientes condiciones:
 - `mcm(num1, num2)`: Al ejecutar `mcm(90, 14)`, la salida debe ser `630`.
 - `mcd(num1, num2)`: Al ejecutar `mcd(924, 780)`, la salida debe ser `12`.
 - `mcmN(numeros)`: Al ejecutar `mcm(42, 60, 70, 63)`, la salida debe ser `1260`.
+<<<<<<< HEAD
 - `mcdN(numeros)`: Al ejecutar `mcd(820, 630, 1050, 1470)`, la salida debe ser `210`.
+=======
+- `mcdN(numeros)`: Al ejecutar `mcd(840, 630, 1050, 1470)`, la salida debe ser `210`.
+>>>>>>> 48f85b95cc1bf58dd7dd9be4756517d20d156718
 
 ### Entrega
 
