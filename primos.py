@@ -94,9 +94,10 @@ def fact2dicN(*numeros):
         Pasa de descompon a un diccionario (para facilitar cálcula mcmN y mcdN)
         """
         diccionario = []
-        factores1 = descompon(numero1)
-        factores2 = descompon(numero2)
+        for i = 0:
+        factores1 = descompon(numeros[i])
         factores = set(factores1) | set(factores2)
+
         # crear diccionario vacío
         dic1 = {factor : 0 for factor in factores}
         dic2 = {factor : 0 for factor in factores}
