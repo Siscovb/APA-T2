@@ -156,8 +156,7 @@ def mcmN (*numeros):
     """
     factor_counts = {}
     for n in numeros:
-        descomp = descompon(n)
-        for factor, count in n_veces_lista(descomp):
+        for factor, count in n_veces_lista(descompon(n)):
             factor_counts[factor] = max(factor_counts.get(factor, 0), count)
     mcm = 1
     for factor, count in factor_counts.items():
@@ -169,24 +168,24 @@ def mcdN (*numeros):
     """
     Devuelve el mínimo común múltiplo de sus argumentos.
     >>> mcdN(820, 630, 1050, 1470)
-    210
+    10
     """
     factor_counts = {}
     for n in numeros:
-        descomp = descompon(n)
-        num_factor_counts = n_veces_lista(descomp)
+        num_factor_counts = n_veces_lista(descompon(n))
         for factor, count in num_factor_counts:
             if factor not in factor_counts:
                 factor_counts[factor] = [count]
             else:
                 factor_counts[factor].append(count)
+            #print(factor_counts)
 
     mcd = 1
     for factor, counts in factor_counts.items():
         if len(counts) == len(numeros):
             mcd *= factor ** min(counts)
-
+    #print(factor_counts.items())
     return mcd
 
-
+mcdN(820, 630, 1050, 1470)
 doctest.testmod()
