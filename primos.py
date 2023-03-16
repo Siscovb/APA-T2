@@ -154,12 +154,12 @@ def mcmN (*numeros):
     >>> mcmN(42, 60, 70, 63)
     1260
     """
-    factor_counts = {}
+    factor_dict = {}
     for n in numeros:
         for factor, count in n_veces_lista(descompon(n)):
-            factor_counts[factor] = max(factor_counts.get(factor, 0), count)
+            factor_dict[factor] = max(factor_dict.get(factor, 0), count)
     mcm = 1
-    for factor, count in factor_counts.items():
+    for factor, count in factor_dict.items():
         mcm *= factor ** count
     return mcm
 
@@ -170,21 +170,21 @@ def mcdN (*numeros):
     >>> mcdN(820, 630, 1050, 1470)
     10
     """
-    factor_counts = {}
+    factor_dict = {}
     for n in numeros:
-        num_factor_counts = n_veces_lista(descompon(n))
-        for factor, count in num_factor_counts:
-            if factor not in factor_counts:
-                factor_counts[factor] = [count]
+        num_factor_dict = n_veces_lista(descompon(n))
+        for factor, count in num_factor_dict:
+            if factor not in factor_dict:
+                factor_dict[factor] = [count]
             else:
-                factor_counts[factor].append(count)
-            #print(factor_counts)
+                factor_dict[factor].append(count)
+            #print(factor_dict)
 
     mcd = 1
-    for factor, counts in factor_counts.items():
+    for factor, counts in factor_dict.items():
         if len(counts) == len(numeros):
             mcd *= factor ** min(counts)
-    #print(factor_counts.items())
+    #print(factor_dict.items())
     return mcd
 
 mcdN(820, 630, 1050, 1470)
