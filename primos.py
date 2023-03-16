@@ -185,5 +185,4 @@ def mcdN (*numeros):
     #print(factor_dict.items())
     return mcd
 
-mcdN(820, 630, 1050, 1470)
 doctest.testmod()
