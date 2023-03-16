@@ -1,7 +1,5 @@
 import doctest
 
-
-
 #DEFINICIÓN de Número Primo:
 #Número entero que solamente es divisible por él mismo y por la unidad (1)
 #############################################################################
@@ -155,8 +153,8 @@ def mcmN (*numeros):
     1260
     """
     factor_dict = {}
-    for n in numeros:
-        for factor, count in n_veces_lista(descompon(n)):
+    for num in numeros:
+        for factor, count in n_veces_lista(descompon(num)):
             factor_dict[factor] = max(factor_dict.get(factor, 0), count)
     mcm = 1
     for factor, count in factor_dict.items():
@@ -171,8 +169,8 @@ def mcdN (*numeros):
     10
     """
     factor_dict = {}
-    for n in numeros:
-        num_factor_dict = n_veces_lista(descompon(n))
+    for num in numeros:
+        num_factor_dict = n_veces_lista(descompon(num))
         for factor, count in num_factor_dict:
             if factor not in factor_dict:
                 factor_dict[factor] = [count]
