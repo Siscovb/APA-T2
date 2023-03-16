@@ -15,6 +15,9 @@ Exemples:
 
 >>> mcm(90, 14)
 630
+
+>>> mcd(924, 780)
+12
 """
 
 
@@ -77,7 +80,15 @@ def mcm(numero1, numero2):
         mcm = mcm * factor**max(dic1[factor], dic2[factor])
     return mcm
 
-
+def mcd(numero1, numero2):
+    """
+    Devuelve el máximo común divisor de sus argumentos
+    """
+    mcd = 1
+    dic_fact1, dic_fact2 = fact2dict(numero1, numero2)
+    for factor in dic_fact1 | dic_fact2:
+        mcd *= factor**min(dic_fact1[factor], dic_fact2[factor])
+    return mcd
 
 import doctest
 doctest.testmod()
