@@ -34,9 +34,9 @@ def descompon(numero):
     >>> descompon(36 * 175 * 143)
     (2, 2, 3, 3, 5, 5, 7, 11, 13)
     """
-    # he intentado hacerlo usando en vez de range(2,numero+1), 
+    # He intentado hacerlo usando en vez de range(2,numero+1), 
     # la tupla con los primos hasta numero primos(numero),
-    # Pero me ocupaba mucho tiempo de cálculo y nunca me llegaba a terminar.
+    # pero me ocupaba mucho tiempo de cálculo y nunca me llegaba a terminar.
  
     factors = []
     for i in range(2,numero+1):
@@ -49,7 +49,10 @@ def descompon(numero):
 
 
 #############################################################################
-def mcd_eucleides(numero1, numero2): #mcd con algoritmo de euclides
+    #mcd con algoritmo de euclides.
+    #No lo he usado para la entrega, pero lo hice antes de saber que tenian que usar-se
+    #las funciones creadas y pues no lo iba a borrar. Lo he usado para comparar resultados.
+def mcd_eucleides(numero1, numero2):  
     if numero1*numero2 == 0: 
         return 0
     elif int(numero1)!= numero1 or int(numero2)!= numero2:
@@ -65,6 +68,10 @@ def mcd_eucleides(numero1, numero2): #mcd con algoritmo de euclides
         return numero1
 
 #############################################################################
+    #Función que devuelve una lista de listas con cada sublista una pareja de:
+        #Valor, nº de veces que aparece en la lista pasada por parametros
+        #La hice porque he intentado hacer las funciones mcm y mcd sin diccionarios (para hacerlo diferente que en clase)
+        # y necesitaba de una función así.
 def n_veces_lista (lista):
     cont =[]
     for i in set(lista):
@@ -73,6 +80,9 @@ def n_veces_lista (lista):
     return cont
 
 #############################################################################
+    #Cómo he dicho anteriormente, he intentado hacer mcm y mcd 
+    # de una forma alternativa al uso de los diccionarios, 
+    # más que nada porqué intenté hacerlo antes de ser explicado en clase y no la iba a borrar
 def mcm (numero1, numero2):
     """
     Devuelve el mínimo común múltiplo de sus argumentos.
@@ -107,6 +117,7 @@ def mcm (numero1, numero2):
     return resultat
 
 #############################################################################
+    #En esta, le he introducido casos particulares para ahorrar recorrer listas de listas y hacer calculos o evitar errores
 def mcd (numero1, numero2):
     """
     Devuelve el mínimo común múltiplo de sus argumentos.
@@ -146,6 +157,9 @@ def mcd (numero1, numero2):
 
         return resultat
 #############################################################################
+    #Al introducior una serie indefinida de elementos, ya he optado por hacer uso de los diccionarios,
+    #ya que la sintaxis y el ahorro de tener que recorrer listas de listas y comparar valores me parecian más óptimos.
+
 def mcmN (*numeros):
     """
     Devuelve el mínimo común múltiplo de sus argumentos.
