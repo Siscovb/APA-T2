@@ -165,8 +165,8 @@ def mcmN (*numeros):
 def mcdN (*numeros):
     """
     Devuelve el mínimo común múltiplo de sus argumentos.
-    >>> mcdN(820, 630, 1050, 1470)
-    10
+    >>> mcdN(840, 630, 1050, 1470)
+    210
     """
     factor_dict = {}
     for num in numeros:

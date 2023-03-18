@@ -1,6 +1,6 @@
 # Segunda tarea de APA 2023: Manejo de números primos
 
-## Nom i cognoms
+## ORIOL GARCIA VILA
 
 ## Fichero `primos.py`
 
@@ -60,7 +60,7 @@ comprobarse las siguientes condiciones:
 - `mcm(num1, num2)`: Al ejecutar `mcm(90, 14)`, la salida debe ser `630`.
 - `mcd(num1, num2)`: Al ejecutar `mcd(924, 780)`, la salida debe ser `12`.
 - `mcmN(numeros)`: Al ejecutar `mcm(42, 60, 70, 63)`, la salida debe ser `1260`.
-- `mcdN(numeros)`: Al ejecutar `mcd(820, 630, 1050, 1470)`, la salida debe ser `210`.
+- `mcdN(numeros)`: Al ejecutar `mcd(840, 630, 1050, 1470)`, la salida debe ser `210`.
 
 ### Entrega
 
@@ -82,3 +82,7 @@ sistema a tiempo, la entrega se formalizará realizando un *pull-request* al pro
 
 El fichero `README.md` deberá respetar las reglas de los ficheros Markdown y visualizarse correctamente en el repositorio,
 incluyendo la imagen con la ejecución de los tests unitarios y el realce sintáctico del código fuente insertado.
+
+## TESTS UNITARIOS:
+<image src="/tests_unitarios.png" alt="Tests unitarios">
+
