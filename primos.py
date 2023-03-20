@@ -82,7 +82,7 @@ def mcd(numero1,numero2):
 
 def mcmN(*numeros):
     """
-    Devuelve el mínimo común múltiplo de sus argumentos.
+    Devuelve el mínimo común múltiplo de sus argumentos.(más de ds argumentos)
     """
     fac_comunes = {}
     for numero in numeros:

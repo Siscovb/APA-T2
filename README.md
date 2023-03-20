@@ -149,6 +149,25 @@ def mcd(numero1,numero2):
         mcd *= factor**min(dic1[factor],dic2[factor])
     return mcd
 ```
+- Función mcmN()
+```python
+def mcmN(*numeros):
+    """
+    Devuelve el mínimo común múltiplo de sus argumentos.(más de dos argmentos)
+    """
+    fac_comunes = {}
+    for numero in numeros:
+        dic1, _ = fact2dic(numero, 1)
+        for factor, cantidad in dic1.items():
+            if factor not in fac_comunes:
+                fac_comunes[factor] = cantidad
+            else:
+                fac_comunes[factor] = max(fac_comunes[factor], cantidad)
+    mcmN = 1
+    for factor, cantidad in fac_comunes.items():
+        mcmN *= factor ** cantidad
+    return mcmN
+```
 
 
 
