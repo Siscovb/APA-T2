@@ -1,6 +1,7 @@
 # Segunda tarea de APA 2023: Manejo de números primos
 
 ## Nom i cognoms
+  Gerard Escardó Cabrerizo
 
 ## Fichero `primos.py`
 
