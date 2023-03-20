@@ -121,7 +121,7 @@ def mcmN(*numeros):
 
 def mcdN(*numeros):
     '''
-    Devuelve el máximo común divisor de sus argumentos.
+    Devuelve el mínimo común divisor de sus argumentos.
     '''
     desc, lista = (), []
     total = 1    
