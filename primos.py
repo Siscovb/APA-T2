@@ -77,10 +77,28 @@ def mcd(numero1,numero2):
 
 def mcmN(*numeros):
     """
-    Devuelve el mínimo común múltiplo de sus argumentos.
-    >>> mcmN(42, 60, 70, 63) 
+    Devuelve el mínimo común múltiplo de los numeros dados en la funcion
+    >>> mcmN(42, 60, 70, 63)
     1260
     """
+    descompon_, lista = (), []
+    resultado = 1
+    for i in range(len(numeros)):
+        descompon_ += (descompon(numeros[i]), )
+        for j in descompon(numeros[i]):
+            lista.append(j)
+    valores_lista = set(lista)
+    valores_total = {item:0 for item in valores_lista}
+    for i in range(len(numeros)):
+        valores = {item:0 for item in valores_lista}
+        for n in descompon_[i]:
+            valores[n] += 1
+        for n in valores_lista:
+            if(valores_total[n] < valores[n]):
+                valores_total[n] = valores[n]  
+    for n in valores_lista:
+        resultado *= n**valores_total[n]
+    return resultado
 
 def mcdN(*numeros):
     """
@@ -88,6 +106,26 @@ def mcdN(*numeros):
     >>> mcdN(840, 630, 1050, 1470)
     210
     """
+    descompon_, lista = (), []
+    resultado = 1    
+    for i in range(len(numeros)):
+        descompon_ += (descompon(numeros[i]), )
+        for j in descompon(numeros[i]):
+            lista.append(j)
+    valores_lista = set(lista)
+    valores_total = {item:0 for item in valores_lista}
+    for i in descompon_[0]:
+        valores_total[i] += 1
+    for i in range(len(numeros)):
+        valores = {item:0 for item in valores_lista}
+        for n in descompon_[i]:
+            valores[n] += 1
+        for n in valores_lista:
+            if(valores_total[n] > valores[n]):
+                valores_total[n] = valores[n]  
+    for n in valores_lista:
+        resultado *= n**valores_total[n]
+    return resultado
 
 import doctest
 doctest.testmod()
