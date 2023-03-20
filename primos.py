@@ -12,6 +12,10 @@ Exemples:
 630
 >>> mcd(924, 780)
 12
+>>> mcmN(42, 60, 70, 63)
+1260
+>>> mcdN(840, 630, 1050, 1470)
+210
 """
 
 
@@ -76,6 +80,39 @@ def mcd(numero1,numero2):
         mcd *= factor**min(dic1[factor],dic2[factor])
     return mcd
 
+def mcmN(*numeros):
+    """
+    Devuelve el mínimo común múltiplo de sus argumentos.
+    """
+    fac_comunes = {}
+    for numero in numeros:
+        dic1, _ = fact2dic(numero, 1)
+        for factor, cantidad in dic1.items():
+            if factor not in fac_comunes:
+                fac_comunes[factor] = cantidad
+            else:
+                fac_comunes[factor] = max(fac_comunes[factor], cantidad)
+    mcmN = 1
+    for factor, cantidad in fac_comunes.items():
+        mcmN *= factor ** cantidad
+    return mcmN
+
+def mcdN (*numeros):
+    """
+    Devuelve el máximo común divisor de sus argumentos.
+    """
+    fac_comunes = {}
+    for numero in numeros:
+        dic1, _ = fact2dic(numero, 1)
+        for factor, cantidad in dic1.items():
+            if factor not in fac_comunes:
+                fac_comunes[factor] = cantidad
+            else:
+                fac_comunes[factor] = min(fac_comunes[factor], cantidad)
+    mcdN = 1
+    for factor, cantidad in fac_comunes.items():
+        mcdN *= factor ** cantidad
+    return mcdN
 'Para hacer los tests unitarios:'
 import doctest
 doctest.testmod()
