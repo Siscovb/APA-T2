@@ -168,6 +168,7 @@ def dicFactN(*numeros):
         diccionario[numero] = dicfact
     return diccionario
 
+
 def mcmN(*numeros):
     """
     Devuelve el mínimo común múltiplo de sus argumentos.

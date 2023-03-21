@@ -70,7 +70,7 @@ Inserte a continuación una captura de pantalla que muestre el resultado de ejec
 *verbosa*, de manera que se muestre el resultado de la ejecución de los tests unitarios.
 
 - El resultado al ejectuar el fichero con la opcion *verbosa* es:
-<img src="img/foto.png" width="480" align="center"> 
+<img src="img/foto.pNg" width="480" align="center"> 
 
 #### Código desarrollado
 
@@ -247,6 +247,7 @@ def dicFactN(*numeros):
         for factor in factores : dicfact[factor] += 1
         diccionario[numero] = dicfact
     return diccionario
+
 
 def mcmN(*numeros):
     """
