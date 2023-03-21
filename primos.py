@@ -82,7 +82,7 @@ def mcd(numero1,numero2):
 
 def mcmN(*numeros):
     """
-    Devuelve el mínimo común múltiplo de sus argumentos.(más de ds argumentos)
+    Devuelve el mínimo común múltiplo de sus argumentos.(más de dos argumentos)
     """
     fac_comunes = {}
     for numero in numeros:
@@ -101,18 +101,20 @@ def mcdN (*numeros):
     """
     Devuelve el máximo común divisor de sus argumentos.
     """
-    fac_comunes = {}
+    dic_comunes = {}
     for numero in numeros:
-        dic1, _ = fact2dic(numero, 1)
-        for factor, cantidad in dic1.items():
-            if factor not in fac_comunes:
-                fac_comunes[factor] = cantidad
+        dic, _ = fact2dic(numero, 1)
+        for factor, cantidad in dic.items():
+            if factor not in dic_comunes:
+                dic_comunes[factor] = cantidad
             else:
-                fac_comunes[factor] = min(fac_comunes[factor], cantidad)
+                dic_comunes[factor] = min(dic_comunes[factor], cantidad)
     mcdN = 1
-    for factor, cantidad in fac_comunes.items():
-        mcdN *= factor ** cantidad
+    for factor, cantidad in dic_comunes.items():
+        for i in range (cantidad):
+            mcdN *= factor
     return mcdN
+       
 'Para hacer los tests unitarios:'
 import doctest
 doctest.testmod()
