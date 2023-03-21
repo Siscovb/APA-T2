@@ -70,7 +70,7 @@ Inserte a continuación una captura de pantalla que muestre el resultado de ejec
 *verbosa*, de manera que se muestre el resultado de la ejecución de los tests unitarios.
 
 <img src="imatge_1.jpg" width="480" align="center">
-
+<img src="tests_2.jpg" width="480" align="center">
 
 #### Código desarrollado
 
@@ -161,9 +161,30 @@ def mcd(numero1, numero2):
     mcd = 1
     #el for ens recorre totes les claus en factor1
     for factor in dicFact1:
-        #Agafem el màxim exponent (factor en el diccionari de factors) de cada numero
+        #Agafem el mínim exponent (factor en el diccionari de factors) de cada numero
         mcd *= factor**min(dicFact1[factor], dicFact2[factor])
     return mcd
+
+def mcmN(*numeros):
+    """
+    Retorna el mcm de varis numeros
+    """
+    #Inicialitzem al primer valor de la tupla la nova variable on enmagatzemarem el resultat.
+    mcmn = numeros[0]
+    #Passem tots els nombres de la tupla per la funció amb la que obtindrem el mcm del valor actual i l'anterior.
+    for num in range(1, len(numeros)):
+        mcmn = mcm(mcmn, numeros[num])
+    return mcmn
+
+def mcdN(*numeros):
+    """
+    Retorna el minim comú divisor de varis numeros
+    """
+    #Fem el mateix que a la funció anterior pero aquest cop utilitzant la funció del mcd
+    mcdn = numeros[0]
+    for num in range(1, len(numeros)):
+        mcdn = mcd(mcdn, numeros[num])
+    return mcdn
 
 import doctest
 doctest.testmod()

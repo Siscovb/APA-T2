@@ -19,6 +19,12 @@ Ejemplos:
 
 >>> mcd(924, 780)
 12
+
+>>> mcmN(42, 60, 70, 63)
+1260
+
+>>> mcdN(840, 630, 1050, 1470)
+210
 """
 
 def esPrimo(numero):
@@ -84,6 +90,29 @@ def mcd(numero1, numero2):
         #Agafem el màxim exponent (factor en el diccionari de factors) de cada numero
         mcd *= factor**min(dicFact1[factor], dicFact2[factor])
     return mcd
+
+def mcmN(*numeros):
+    """
+    Retorna el mcm de varis numeros
+    """
+    #Inicialitzem al primer valor de la tupla la nova variable on enmagatzemarem el resultat.
+    mcmn = numeros[0]
+    #Passem tots els nombres de la tupla per la funció amb la obtindrem el mcm del valor actual i l'anterior.
+    for num in range(1, len(numeros)):
+        mcmn = mcm(mcmn, numeros[num])
+    return mcmn
+
+def mcdN(*numeros):
+    """
+    Retorna el minim comú divisor de varis numeros
+    """
+    #Fem el mateix que a la funció anterior pero aquest cop utilitzant la funció del mcd
+    mcdn = numeros[0]
+    for num in range(1, len(numeros)):
+        mcdn = mcd(mcdn, numeros[num])
+    return mcdn
+
+
 
 import doctest
 doctest.testmod()
