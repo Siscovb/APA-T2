@@ -81,6 +81,57 @@ def mcd(numero1, numero2):
         mcd *= factor**min(dic1[factor], dic2[factor])
     return mcd
 
+def mcmN(*numero1):
+    """
+    Devuelve el mínimo común múltiplo de los numeros dados en la funcion
+    >>> mcmN(42, 60, 70, 63)
+    1260
+    """
+    descompon1, lista = (), []
+    vtotal = 1
+    for i in range(len(numero1)):
+        descompon1 += (descompon(numero1[i]), )
+        for j in descompon(numero1[i]):
+            lista.append(j)
+    vlista = set(lista)
+    dic1 = {item:0 for item in vlista}
+    for i in range(len(numero1)):
+        valores = {item:0 for item in vlista}
+        for n in descompon1[i]:
+            valores[n] += 1
+        for n in vlista:
+            if(dic1[n] < valores[n]):
+               dic1[n] = valores[n]  
+    for n in vlista:
+        vtotal *= n**dic1[n]
+    return vtotal
+
+def mcdN(*numero1):
+    """
+    Devuelve el mínimo común divisor de sus argumentos.
+    >>> mcdN(840, 630, 1050, 1470)
+    210
+    """
+    descompon1, lista = (), []
+    vtotal = 1    
+    for i in range(len(numero1)):
+        descompon1 += (descompon(numero1[i]), )
+        for j in descompon(numero1[i]):
+            lista.append(j)
+    vlista = set(lista)
+    dic1 = {item:0 for item in vlista}
+    for i in descompon1[0]:
+        dic1[i] += 1
+    for i in range(len(numero1)):
+        dic = {item:0 for item in vlista}
+        for num in descompon1[i]:
+            dic[num] += 1
+        for num in vlista:
+            if(dic1[num] > dic[num]):
+               dic1[num] = dic[num]  
+    for num in vlista:
+        vtotal *= num**dic1[num]
+    return vtotal
 
 import doctest
 doctest.testmod()
