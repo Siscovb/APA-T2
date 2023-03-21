@@ -90,17 +90,16 @@ def dicFactN(*numeros):
 def mcmN(*numeros):
     """
     Devuelve el mínimo común múltiplo de una lista de N números
+    >>> mcm(42, 60, 70, 63)
+    1260
     """
-    # Obtenemos los factores primos y sus exponentes para cada número
-    factores_comunes = {}
+    comunes = {}
     for numero in numeros:
         factores = dicFactN(numero)
         for factor, exponente in factores.items():
-            factores_comunes[factor] = max(exponente, factores_comunes.get(factor, 0))
-
-    # Calculamos el mcm a partir de los factores comunes y sus exponentes
+            comunes[factor] = max(exponente, comunes.get(factor, 0))
     mcm = 1
-    for factor, exponente in factores_comunes.items():
+    for factor, exponente in comunes.items():
         mcm *= factor ** exponente
 
     return mcm
