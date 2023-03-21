@@ -2,7 +2,7 @@ def esPrimo(numero):
     """
     Devuelve "True" si su argumento es primo y "False" si no lo es
     >>> [ numero for numero in range(2, 50) if esPrimo(numero) ]
-        [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+    [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
     """
     for prueba in range (2, int(numero**0.5)+1):
         if numero % prueba == 0: return False
@@ -108,7 +108,7 @@ def mcdN(*numeros):
     """
     Devuelve el máximo común divisor de una lista de N números.
     >>> mcdN(840, 630, 1050, 1470)
-    10
+    210
     """
     comunes = {}
     for numero in numeros:
@@ -120,3 +120,6 @@ def mcdN(*numeros):
     for factor, exponente in comunes.items():
         mcd *= factor ** exponente
     return mcd
+
+import doctest
+doctest.testmod()
