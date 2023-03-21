@@ -101,7 +101,7 @@ def mcmN(*numeros):
     """
     Devuelve el mínimo común múltiplo de varios números.
     La función tiene como argumento una cantidad variable de números.
-    >>> mcm(42, 60, 70, 63)
+    >>> mcmN(42, 60, 70, 63)
     1260
     """
     mcm = 1
@@ -114,7 +114,7 @@ def mcdN(*numeros):
     """
     Devuelve el máximo común divisor de varios números.
     La función tiene como argumento una cantidad variable de números.
-    >>> mcd(840, 630, 1050, 1470)
+    >>> mcdN(840, 630, 1050, 1470)
     210
     """
     mcd = 1
