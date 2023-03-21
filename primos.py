@@ -19,6 +19,12 @@ Exemples d'utilització:
 
 >>> mcd(924, 780)
 12
+
+>>> mcmN(42, 60, 70, 63)
+1260
+
+>>> mcdN(840, 630, 1050, 1470)
+210
 """
 
 
@@ -93,6 +99,36 @@ def mcd(numero1, numero2):
         mcd *= factor**min(dicFact1[factor], dicFact2[factor])
     
     return mcd
+
+def mcmN(*numeros):
+    """
+    Devuelve el mínimo común múltiplo de sus argumentos
+    """
+    
+    # Si es pasa nomès un número, el mcm és el mateix número
+    if len(numeros) == 1:
+        return numeros[0]
+    
+    #Iterem sobre els parells de números i calculem el mcm
+    #Per cada iteració, reemplaçem el primero número per el mcm parcial
+    mcm_actual = numeros[0]
+    for i in range(1, len(numeros)):
+        mcm_actual = mcm(mcm_actual, numeros[i])
+    return mcm_actual
+
+def mcdN(*numeros):
+    """
+    Devuelve el máximo común divisor de sus argumentos.
+    """
+    
+    # Si es pasa nomès un número, el mcd és el mateix número
+    if len(numeros) == 1:
+        return numeros[0]
+    
+    mcd_actual = numeros[0]
+    for i in range(1, len(numeros)):
+        mcd_actual = mcd(mcd_actual, numeros[i])
+    return mcd_actual
 
 import doctest
 doctest.testmod()
