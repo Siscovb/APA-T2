@@ -36,7 +36,9 @@ def descompon(numero):
 
 
 def dicFact(numero1, numero2):
-
+    """
+    Devuelve el factor primo de un número con su correspondiente exponente. 
+    """
     factores1 = descompon(numero1)
     factores2 = descompon(numero2)
     factores = set(factores1 + factores2)
@@ -59,6 +61,7 @@ def mcm(numero1, numero2):
         mcm *= factor ** max(dicFact1[factor], dicFact2[factor])
     return mcm
 
+
 def mcd(numero1, numero2):
     """
     Devuelve el máximo común divisor de sus argumentos.
@@ -70,5 +73,37 @@ def mcd(numero1, numero2):
     for factor in  dicFact1 | dicFact2:
         mcd *= factor ** min(dicFact1[factor], dicFact2[factor])
     return mcd
+
+
+def dicFactN(*numeros):
+    """
+    Devuelve un diccionario que contiene los factores primos y sus exponentes correspondientes para cada número de los N numeros.
+    """
+    diccionario = {}
+    for numero in numeros:
+        factores = descompon(numero)
+        for factor in factores:
+            diccionario[factor] = diccionario.get(factor, 0) + 1
+    return diccionario
+
+
+def mcmN(*numeros):
+    """
+    Devuelve el mínimo común múltiplo de una lista de N números
+    """
+    # Obtenemos los factores primos y sus exponentes para cada número
+    factores_comunes = {}
+    for numero in numeros:
+        factores = dicFactN(numero)
+        for factor, exponente in factores.items():
+            factores_comunes[factor] = max(exponente, factores_comunes.get(factor, 0))
+
+    # Calculamos el mcm a partir de los factores comunes y sus exponentes
+    mcm = 1
+    for factor, exponente in factores_comunes.items():
+        mcm *= factor ** exponente
+
+    return mcm
+
 
 
