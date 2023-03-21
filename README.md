@@ -69,7 +69,7 @@ comprobarse las siguientes condiciones:
 Inserte a continuación una captura de pantalla que muestre el resultado de ejecutar el fichero `primos.py` con la opción
 *verbosa*, de manera que se muestre el resultado de la ejecución de los tests unitarios.
 
-  <img src="Captura.png" width="640" align="center">   
+  <img src="Captura_final.png" width="640" align="center">   
 
 #### Código desarrollado 
 
@@ -158,6 +158,40 @@ realce sintáctico en Python del mismo.
           mcd *= factor**min(dicFact1[factor], dicFact2[factor])
       
       return mcd
+  ```
+
+  ```python
+  def mcmN(*numeros):
+    """
+    Devuelve el mínimo común múltiplo de sus argumentos
+    """
+    
+    # Si es pasa nomès un número, el mcm és el mateix número
+    if len(numeros) == 1:
+        return numeros[0]
+    
+    #Iterem sobre els parells de números i calculem el mcm
+    #Per cada iteració, reemplaçem el primero número per el mcm parcial
+    mcm_actual = numeros[0]
+    for i in range(1, len(numeros)):
+        mcm_actual = mcm(mcm_actual, numeros[i])
+    return mcm_actual
+  ```
+
+  ```python
+  def mcdN(*numeros):
+    """
+    Devuelve el máximo común divisor de sus argumentos.
+    """
+    
+    # Si es pasa nomès un número, el mcd és el mateix número
+    if len(numeros) == 1:
+        return numeros[0]
+    
+    mcd_actual = numeros[0]
+    for i in range(1, len(numeros)):
+        mcd_actual = mcd(mcd_actual, numeros[i])
+    return mcd_actual
   ```
 
   ```python
