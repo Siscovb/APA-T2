@@ -1,11 +1,8 @@
-
-
-
 def esPrimo(numero):
     """
     Devuelve "True" si su argumento es primo y "False" si no lo es
-    Al ejecutar `[ numero for numero in range(2, 50) if esPrimo(numero) ]`, la salida debe ser
-    `[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]`
+    >>> [ numero for numero in range(2, 50) if esPrimo(numero) ]
+        [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
     """
     for prueba in range (2, int(numero**0.5)+1):
         if numero % prueba == 0: return False
@@ -16,7 +13,6 @@ def primos(numero):
 
     """
     Devuelve una **tupla** con todos los números primos menores que su argumento
-    
     >>> primos(50)
     (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47)
     """
@@ -41,9 +37,6 @@ def descompon(numero):
 
 def dicFact(numero1, numero2):
 
-    """
-    """
-
     factores1 = descompon(numero1)
     factores2 = descompon(numero2)
     factores = set(factores1 + factores2)
@@ -56,8 +49,9 @@ def dicFact(numero1, numero2):
 
 def mcm(numero1, numero2):
     """
-    >>> mcm(36, 30) 
-    180
+    Devuelve el mínimo común múltiplo de sus argumentos.
+    >>> mcm(90, 14) 
+    630
     """
     mcm = 1
     dicFact1, dicFact2 = dicFact(numero1, numero2)
@@ -65,5 +59,16 @@ def mcm(numero1, numero2):
         mcm *= factor ** max(dicFact1[factor], dicFact2[factor])
     return mcm
 
-import doctest
-doctest.testmod()
+def mcd(numero1, numero2):
+    """
+    Devuelve el máximo común divisor de sus argumentos.
+    >>> mcd(924, 780)
+    12
+    """
+    mcd = 1
+    dicFact1, dicFact2 = dicFact(numero1, numero2)
+    for factor in  dicFact1 | dicFact2:
+        mcd *= factor ** min(dicFact1[factor], dicFact2[factor])
+    return mcd
+
+
