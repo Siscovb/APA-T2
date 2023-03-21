@@ -67,10 +67,10 @@ comprobarse las siguientes condiciones:
 Inserte a continuación una captura de pantalla que muestre el resultado de ejecutar el fichero `primos.py` con la opción
 *verbosa*, de manera que se muestre el resultado de la ejecución de los tests unitarios.
 
-<img src="Captura.png" width="480" align="center"/>
+<img src="Captura.PNG" width="480" align="center"/>
 <p>
 <p\>
-<img src="Captura2.png" width="480" align="center"/>
+<img src="Captura2.PNG" width="480" align="center"/>
 
 <p>
 <p\>
