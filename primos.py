@@ -118,7 +118,7 @@ def dicFact(numero1,numero2):
     for factor in factores1 : dicfact1[factor] += 1
     for factor in factores2 : dicfact2[factor] += 1
   
-    return dicfact1,dicfact2
+    return dicfact1, dicfact2
     
 
 def mcm(numero1, numero2):
@@ -132,7 +132,7 @@ def mcm(numero1, numero2):
     mcm = 1
     dicFact1, dicFact2 = dicFact(numero1, numero2)
     for factor in  dicFact1 | dicFact2:
-        mcm *= factor ** max(dicFact1[factor],dicFact2[factor])
+        mcm *= factor ** max(dicFact1[factor], dicFact2[factor])
     return mcm
     
 
@@ -147,9 +147,82 @@ def mcd(numero1, numero2):
     mcd = 1
     dicFact1, dicFact2 = dicFact(numero1, numero2)
     for factor in  dicFact1 | dicFact2:
-        mcd *= factor ** min(dicFact1[factor],dicFact2[factor])
+        mcd *= factor ** min(dicFact1[factor], dicFact2[factor])
     return mcd
 
+
+def dicFactN(*numeros):
+    """
+    Devuelve el factor primo de un número con su 
+    correspondiente exponente. 
+
+    >>> dicFactN(12, 18, 20)
+    {12: {2: 2, 3: 1}, 18: {2: 1, 3: 2}, 20: {2: 2, 5: 1}}
+    """
+    diccionario = {}
+
+    for numero in numeros:
+        factores = descompon(numero)
+        dicfact = {factor : 0 for factor in factores } 
+        for factor in factores : dicfact[factor] += 1
+        diccionario[numero] = dicfact
+    return diccionario
+
+def mcmN(*numeros):
+    """
+    Devuelve el mínimo común múltiplo de sus argumentos.
+
+    >>> mcmN(42, 60, 70, 63)
+    1260
+    """
+    #Obtenim el diccionari de factors primers per a cada un dels números
+    diccionario = dicFactN(*numeros)
+    mcm = 1
+
+    #Iterem sobre un conjunt que conté la unió/tots els factors primers
+    #dels numeros que ens han donat a la entrada.
+    #Ena primera iteració, es busca el exponent màxim en cada número de 
+    #l'entrada per el primer factor primer
+
+    for factor in set().union(*diccionario.values()):
+        max_exp = 0
+        for num in diccionario:
+            if factor in diccionario[num]:
+                max_exp = max(max_exp, diccionario[num][factor])
+        mcm *= factor ** max_exp
+    return mcm
+
+    #POSSIBLE SOLUCIÓ UTILITZANT LA FUNCIÓ MCM CREADA ANTERIORMENT:
+
+    # mcm_total = 1
+    # for numero in numeros:
+    #     mcm_total = mcm(mcm_total, numero)
+    # return mcm_total
+
+
+def mcdN(*numeros):
+    """
+    Devuelve el máximo común divisor de sus argumentos.
+
+    >>> mcdN(820, 630, 1050, 1470)
+    10
+    """
+    #Obtenim el diccionari de factors primers per a cada un dels números
+    diccionario = dicFactN(*numeros)   
+
+    #s'obtenen els factors primers per al primer numero de la llista numeros  
+    factores_comunes = set(diccionario[numeros[0]].keys())      
+    
+    #Recorrem el diccionari per buscar els valors comuns (interseccions))
+    for dic in diccionario.values():
+        factores_comunes = factores_comunes.intersection(set(dic.keys()))
+    mcd = 1
+
+    #Elevem cada factor comu a l'exponent més petit
+    for factor in factores_comunes:
+        exponentes = [dic[factor] for dic in diccionario.values()]
+        mcd *= pow(factor, min(exponentes))
+    return mcd
 
 
 import doctest
