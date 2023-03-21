@@ -89,8 +89,8 @@ def dicFactN(*numeros):
 
 def mcmN(*numeros):
     """
-    Devuelve el mínimo común múltiplo de una lista de N números
-    >>> mcm(42, 60, 70, 63)
+    Devuelve el mínimo común múltiplo de una lista de N números.
+    >>> mcmN(42, 60, 70, 63)
     1260
     """
     comunes = {}
@@ -101,8 +101,22 @@ def mcmN(*numeros):
     mcm = 1
     for factor, exponente in comunes.items():
         mcm *= factor ** exponente
-
     return mcm
 
 
-
+def mcdN(*numeros):
+    """
+    Devuelve el máximo común divisor de una lista de N números.
+    >>> mcdN(840, 630, 1050, 1470)
+    10
+    """
+    comunes = {}
+    for numero in numeros:
+        factores = dicFactN(numero)
+        for factor, exponente in factores.items():
+            comunes[factor] = comunes.get(factor, exponente)
+            comunes[factor] = ((exponente < comunes[factor]) * exponente + (exponente >= comunes[factor]) * comunes[factor])
+    mcd = 1
+    for factor, exponente in comunes.items():
+        mcd *= factor ** exponente
+    return mcd
