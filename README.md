@@ -168,7 +168,26 @@ def mcmN(*numeros):
         mcmN *= factor ** cantidad
     return mcmN
 ```
-
+- Función mcdN(*numeros):
+```python
+def mcdN (*numeros):
+    """
+    Devuelve el máximo común divisor de sus argumentos. (más de 2 argumentos )
+    """
+    dic_comunes = {}
+    for numero in numeros:
+        dic, _ = fact2dic(numero, 1)
+        for factor, cantidad in dic.items():
+            if factor not in dic_comunes:
+                dic_comunes[factor] = cantidad
+            else:
+                dic_comunes[factor] = min(dic_comunes[factor], cantidad)
+    mcdN = 1
+    for factor, cantidad in dic_comunes.items():
+        for i in range (cantidad):
+            mcdN *= factor
+    return mcdN
+```
 
 
 #### Subida del resultado al repositorio GitHub ¿y *pull-request*?

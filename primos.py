@@ -99,7 +99,7 @@ def mcmN(*numeros):
 
 def mcdN (*numeros):
     """
-    Devuelve el máximo común divisor de sus argumentos.
+    Devuelve el máximo común divisor de sus argumentos. (más de 2 argumentos )
     """
     dic_comunes = {}
     for numero in numeros:
