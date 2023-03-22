@@ -16,6 +16,9 @@ Exemples:
 
 >>> mcm(90, 14)
 630
+
+>>> mcmN(42, 60, 70, 63)
+1260
 """
 
 def esPrimo(numero):
@@ -75,6 +78,19 @@ def mcm(numero1, numero2):
     return mcm
 
 
+def mcmN(*numeros):
+    """
+    Devuelve el mínimo común múltiplo de una lista de N números.
+    """
+    comuns = {}
+    for numero in numeros:
+        factors = fact2dic(numero)
+        for factor, exponent in factors.items():
+            comuns[factor] = max(exponent, comuns.get(factor, 0))
+    mcm = 1
+    for factor, exponent in comuns.items():
+        mcm *= factor ** exponent
+    return mcm
 
 
 
