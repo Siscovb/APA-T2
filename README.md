@@ -75,12 +75,12 @@ Inserte a continuación una captura de pantalla que muestre el resultado de ejec
 Inserte a continuación el contenido del fichero `primos.py` usando los comandos necesarios para que se realice el
 realce sintáctico en Python del mismo.
 
-"""
+"""""
 """
 Adrià Serrán Grauvilardell
 
 Módulo de gestión de números primos
-"""""
+"""
 
 def esPrimo(numero):
     """
