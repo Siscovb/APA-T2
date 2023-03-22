@@ -75,7 +75,7 @@ Inserte a continuación una captura de pantalla que muestre el resultado de ejec
 Inserte a continuación el contenido del fichero `primos.py` usando los comandos necesarios para que se realice el
 realce sintáctico en Python del mismo.
 
-"""""
+```
 """
 Adrià Serrán Grauvilardell
 
@@ -187,7 +187,7 @@ def mcdN(*numeros):
 
 import doctest
 doctest.testmod()
-"""""
+```
 
 #### Subida del resultado al repositorio GitHub ¿y *pull-request*?
 
