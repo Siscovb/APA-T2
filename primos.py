@@ -89,5 +89,35 @@ def mcd(numero1, numero2):
     return mcd
 
 
+def mcmN(*numeros):
+    """
+    Devuelve el mínimo común múltiplo de sus argumentos.
+    >>> mcmN(42, 60, 70, 63)
+    1260
+    """
+    # Inicialitzem objecte amb el primer valor de la llista
+    mcm_actualitzat = numeros[0]
+
+    # Actualitzem mcm a mida que valorem tots els arguments.
+    for i in range(1, len(numeros)):
+        mcm_actualitzat = mcm(mcm_actualitzat, numeros[i])
+    return mcm_actualitzat
+
+
+def mcdN(*numeros):
+    """
+    Devuelve el máximo común divisor de sus argumentos.
+    >>> mcdN(840, 630, 1050, 1470)
+    210
+    """
+    # Inicialitzem objecte amb el primer valor de la llista
+    mcd_actualitzat = numeros[0]
+
+    # Actualitzem mcd a mida que valorem tots els arguments.
+    for i in range(1, len(numeros)):
+        mcd_actualitzat = mcd(mcd_actualitzat, numeros[i])
+    return mcd_actualitzat
+
+
 import doctest
 doctest.testmod()

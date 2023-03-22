@@ -59,8 +59,8 @@ comprobarse las siguientes condiciones:
 - `descompon(numero)`: Al ejecutar `descompon(36 * 175 * 143)`, la salida debe ser `(2, 2, 3, 3, 5, 5, 7, 11, 13)`.
 - `mcm(num1, num2)`: Al ejecutar `mcm(90, 14)`, la salida debe ser `630`.
 - `mcd(num1, num2)`: Al ejecutar `mcd(924, 780)`, la salida debe ser `12`.
-- `mcmN(numeros)`: Al ejecutar `mcm(42, 60, 70, 63)`, la salida debe ser `1260`.
-- `mcdN(numeros)`: Al ejecutar `mcd(840, 630, 1050, 1470)`, la salida debe ser `210`.
+- `mcmN(numeros)`: Al ejecutar `mcmN(42, 60, 70, 63)`, la salida debe ser `1260`.
+- `mcdN(numeros)`: Al ejecutar `mcdN(840, 630, 1050, 1470)`, la salida debe ser `210`.
 
 ### Entrega
 
@@ -166,6 +166,36 @@ def mcd(numero1, numero2):
     for factor in diccionari_factors_1 | diccionari_factors_2:
         mcd *= factor ** min(diccionari_factors_1[factor], diccionari_factors_2[factor])
     return mcd
+
+
+def mcmN(*numeros):
+    """
+    Devuelve el mínimo común múltiplo de sus argumentos.
+    >>> mcmN(42, 60, 70, 63)
+    1260
+    """
+    # Inicialitzem objecte amb el primer valor de la llista
+    mcm_actualitzat = numeros[0]
+
+    # Actualitzem mcm a mida que valorem tots els arguments.
+    for i in range(1, len(numeros)):
+        mcm_actualitzat = mcm(mcm_actualitzat, numeros[i])
+    return mcm_actualitzat
+
+
+def mcdN(*numeros):
+    """
+    Devuelve el máximo común divisor de sus argumentos.
+    >>> mcdN(840, 630, 1050, 1470)
+    210
+    """
+    # Inicialitzem objecte amb el primer valor de la llista
+    mcd_actualitzat = numeros[0]
+
+    # Actualitzem mcd a mida que valorem tots els arguments.
+    for i in range(1, len(numeros)):
+        mcd_actualitzat = mcd(mcd_actualitzat, numeros[i])
+    return mcd_actualitzat
 
 
 import doctest
