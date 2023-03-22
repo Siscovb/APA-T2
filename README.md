@@ -1,6 +1,6 @@
 # Segunda tarea de APA 2023: Manejo de números primos
 
-## Nom i cognoms
+## Gisela León Pipó
 
 ## Fichero `primos.py`
 
@@ -69,10 +69,135 @@ comprobarse las siguientes condiciones:
 Inserte a continuación una captura de pantalla que muestre el resultado de ejecutar el fichero `primos.py` con la opción
 *verbosa*, de manera que se muestre el resultado de la ejecución de los tests unitarios.
 
-#### Código desarrollado
+  <img src="Captura_final.png" width="640" align="center">   
+
+#### Código desarrollado 
 
 Inserte a continuación el contenido del fichero `primos.py` usando los comandos necesarios para que se realice el
 realce sintáctico en Python del mismo.
+
+  ```python
+  def esPrimo(numero):
+      """ 
+      Devuelve True si su argumento es primo, y False si no lo es.
+      """
+
+      for prova in range(2, int (numero**0.5) + 1):
+          if numero % prova == 0:
+              return False  
+
+      return True
+  ```
+
+  ```python
+  def primos(numero):
+      """
+      Devuelve una tupla con todos los números primos menores que su argumento.
+      """
+
+      return tuple([prova for prova in range(2, numero) if esPrimo(prova)])
+  ```
+
+  ```python
+  def descompon(numero):
+      """
+      Devuelve una tupla con la descomposición en factores primos de su argumento.
+      """
+
+      factores = tuple()
+      for factor in primos(numero + 1):
+          while numero % factor == 0:
+              numero = numero // factor
+              factores = factores + (factor,) 
+      
+      return factores
+  ```
+
+  ```python
+  def fact2dic(numero1, numero2):
+      fact1 = descompon(numero1)
+      fact2 = descompon(numero2)
+      factores = set(fact1) | set(fact2) #convertir a conjunto
+      #inicialitzem el diccionari a 0 i anem afegint en funció de quants cops aparegui el mateix factor
+      dic1 = {factor : 0 for factor in factores}
+      dic2 = {factor : 0 for factor in factores}
+      for factor in fact1:
+          dic1[factor] += 1
+      
+      for factor in fact2:
+          dic2[factor] += 1
+
+      return dic1, dic2
+  ```
+
+  ```python
+  def mcm(numero1, numero2):
+      """
+      Devuelve el mínimo común múltiplo de sus argumentos.
+      """
+
+      mcm = 1
+      #establim a les variables dicFact1 i dicFact2, la descomposició dels dos valors
+      dicFact1, dicFact2 = fact2dic(numero1, numero2)
+      for factor in dicFact1:
+          mcm *= factor**max(dicFact1[factor], dicFact2[factor])
+      
+      return mcm
+  ```
+
+  ```python
+  def mcd(numero1, numero2):
+      """
+      Devuelve el máximo común divisor de sus argumentos.
+      """
+      
+      mcd = 1
+      #establim a les variables dicFact1 i dicFact2, la descomposició dels dos valors
+      dicFact1, dicFact2 = fact2dic(numero1, numero2)
+      for factor in dicFact1:
+          mcd *= factor**min(dicFact1[factor], dicFact2[factor])
+      
+      return mcd
+  ```
+
+  ```python
+  def mcmN(*numeros):
+    """
+    Devuelve el mínimo común múltiplo de sus argumentos
+    """
+    
+    # Si es pasa nomès un número, el mcm és el mateix número
+    if len(numeros) == 1:
+        return numeros[0]
+    
+    #Iterem sobre els parells de números i calculem el mcm
+    #Per cada iteració, reemplaçem el primero número per el mcm parcial
+    mcm_actual = numeros[0]
+    for i in range(1, len(numeros)):
+        mcm_actual = mcm(mcm_actual, numeros[i])
+    return mcm_actual
+  ```
+
+  ```python
+  def mcdN(*numeros):
+    """
+    Devuelve el máximo común divisor de sus argumentos.
+    """
+    
+    # Si es pasa nomès un número, el mcd és el mateix número
+    if len(numeros) == 1:
+        return numeros[0]
+    
+    mcd_actual = numeros[0]
+    for i in range(1, len(numeros)):
+        mcd_actual = mcd(mcd_actual, numeros[i])
+    return mcd_actual
+  ```
+
+  ```python
+  import doctest
+  doctest.testmod()
+  ```
 
 #### Subida del resultado al repositorio GitHub ¿y *pull-request*?
 
