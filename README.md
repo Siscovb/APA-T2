@@ -80,7 +80,7 @@ realce sintáctico en Python del mismo.
 Adrià Serrán Grauvilardell
 
 Módulo de gestión de números primos
-"""
+"""""
 
 def esPrimo(numero):
     """
@@ -187,7 +187,7 @@ def mcdN(*numeros):
 
 import doctest
 doctest.testmod()
-"""
+"""""
 
 #### Subida del resultado al repositorio GitHub ¿y *pull-request*?
 
