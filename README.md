@@ -1,6 +1,6 @@
 # Segunda tarea de APA 2023: Manejo de números primos
 
-## Nom i cognoms
+## Nom i cognoms: Milene Granda
 
 ## Fichero `primos.py`
 
@@ -69,10 +69,126 @@ comprobarse las siguientes condiciones:
 Inserte a continuación una captura de pantalla que muestre el resultado de ejecutar el fichero `primos.py` con la opción
 *verbosa*, de manera que se muestre el resultado de la ejecución de los tests unitarios.
 
-#### Código desarrollado
+Al hacer la opción verbosa nos da el siguiente resultado:
+<img src="test.png" width="480" align="center">
 
+#### Código desarrollado
 Inserte a continuación el contenido del fichero `primos.py` usando los comandos necesarios para que se realice el
 realce sintáctico en Python del mismo.
+- Función esPrimo()
+```python
+def esPrimo(numero):
+    """
+    Devuelve True si su argumento es primo, y False si no lo es.
+    """
+
+    for proba in range(2, int(numero**0.5+1)):
+        if numero % proba ==0:
+            return False
+    return True 
+```
+
+- Función primos()
+```python
+def primos(numero):
+    """
+    Devuelve una tupla con todos los números primos menores que su argumento
+    """
+    return tuple([proba for proba in range(2,numero) if esPrimo(proba)])
+
+```
+- Función descompon()
+```python
+def descompon(numero):
+    """
+    Devuelve una tupla con la descomposición en factores primos de su argumento.
+    """
+    factores = tuple()
+    for factor in primos(numero + 1):
+        while numero%factor ==0:
+            numero = numero//factor
+            factores = factores + (factor,)
+
+    return factores
+```
+- Para realizar las funciones mcm y mcd anteriormente formulamos:
+```python
+def fact2dic(numero1, numero2):
+    factores1 = descompon(numero1)
+    factores2 = descompon(numero2)
+    factores = set(factores1) | set(factores2)
+    dic1 = {factor:0 for factor in factores}
+    dic2 = {factor:0 for factor in factores}
+    for factor in factores1:
+        dic1[factor] += 1
+    for factor in factores2:
+        dic2[factor] += 1
+    return dic1,dic2
+```
+- Función mcm()
+```python
+def mcm (numero1, numero2):
+    """
+    Devuelve el mínimo común múltiplo de sus argumentos.
+    """
+    dic1,dic2 = fact2dic(numero1,numero2)
+    mcm = 1
+    for factor in dic1:
+        mcm *= factor**max(dic1[factor],dic2[factor])
+    return mcm
+```
+- Función mcd()
+```python
+def mcd(numero1,numero2): 
+    """
+    Devuelve el mínimo común múltiplo de sus argumentos.
+    """
+    dic1,dic2 = fact2dic(numero1,numero2)
+    mcd = 1
+    for factor in dic1:
+        mcd *= factor**min(dic1[factor],dic2[factor])
+    return mcd
+```
+- Función mcmN()
+```python
+def mcmN(*numeros):
+    """
+    Devuelve el mínimo común múltiplo de sus argumentos.(más de dos argmentos)
+    """
+    fac_comunes = {}
+    for numero in numeros:
+        dic1, _ = fact2dic(numero, 1)
+        for factor, cantidad in dic1.items():
+            if factor not in fac_comunes:
+                fac_comunes[factor] = cantidad
+            else:
+                fac_comunes[factor] = max(fac_comunes[factor], cantidad)
+    mcmN = 1
+    for factor, cantidad in fac_comunes.items():
+        mcmN *= factor ** cantidad
+    return mcmN
+```
+- Función mcdN(*numeros):
+```python
+def mcdN (*numeros):
+    """
+    Devuelve el máximo común divisor de sus argumentos. (más de 2 argumentos )
+    """
+    dic_comunes = {}
+    for numero in numeros:
+        dic, _ = fact2dic(numero, 1)
+        for factor, cantidad in dic.items():
+            if factor not in dic_comunes:
+                dic_comunes[factor] = cantidad
+            else:
+                dic_comunes[factor] = min(dic_comunes[factor], cantidad)
+    mcdN = 1
+    for factor, cantidad in dic_comunes.items():
+        for i in range (cantidad):
+            mcdN *= factor
+    return mcdN
+```
+
 
 #### Subida del resultado al repositorio GitHub ¿y *pull-request*?
 
